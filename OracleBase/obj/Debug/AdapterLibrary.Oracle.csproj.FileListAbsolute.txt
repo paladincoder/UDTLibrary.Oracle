@@ -1,0 +1,7 @@
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\Debug\Starkey.IT.ServiceModel.MfgAppsBIS.Adapters.AdapterLibrary.Oracle.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\Debug\Starkey.IT.ServiceModel.MfgAppsBIS.Adapters.AdapterLibrary.Oracle.pdb
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\Debug\Oracle.DataAccess.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\Debug\Starkey.IT.ServiceModel.MfgAppsBIS.Adapters.AdapterLibrary.Oracle.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\Debug\Starkey.IT.ServiceModel.MfgAppsBIS.Adapters.AdapterLibrary.Oracle.pdb
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\Debug\Starkey.IT.ServiceModel.MfgAppsBIS.Adapters.AdapterLibrary.Oracle.dll.CodeAnalysisLog.xml
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\Debug\Starkey.IT.ServiceModel.MfgAppsBIS.Adapters.AdapterLibrary.Oracle.dll.lastcodeanalysissucceeded
