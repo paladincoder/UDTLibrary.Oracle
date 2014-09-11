@@ -1,0 +1,6 @@
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\x86\Debug\UDTLibrary.Oracle.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\x86\Debug\UDTLibrary.Oracle.pdb
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\x86\Debug\Oracle.DataAccess.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\x86\Debug\UDTLibrary.Oracle.csprojResolveAssemblyReference.cache
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\x86\Debug\UDTLibrary.Oracle.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\x86\Debug\UDTLibrary.Oracle.pdb

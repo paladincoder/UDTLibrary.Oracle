@@ -1,0 +1,5 @@
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\x86\Release\UDTLibrary.Oracle.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\x86\Release\UDTLibrary.Oracle.pdb
+C:\Projects\Github\OracleUDTLibrary\OracleBase\bin\x86\Release\Oracle.DataAccess.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\x86\Release\UDTLibrary.Oracle.dll
+C:\Projects\Github\OracleUDTLibrary\OracleBase\obj\x86\Release\UDTLibrary.Oracle.pdb
