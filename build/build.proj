@@ -1,0 +1,93 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+		 ToolsVersion="4.0">
+	<Import Project="$(MSBuildProjectDirectory)/build.tasks" />
+
+	<PropertyGroup>
+		<MajorVersion Condition="$(MajorVersion) == ''">1</MajorVersion>
+		<MinorVersion Condition="$(MinorVersion) == ''">0</MinorVersion>
+		<BuildVersion Condition="$(BuildVersion) == ''">14</BuildVersion>
+		<RevisionVersion Condition="$(RevisionVersion) == ''">0</RevisionVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<BuildSolutionDir>$(MSBuildProjectDirectory)/..</BuildSolutionDir>
+		<SrcDir>$(BuildSolutionDir)/src</SrcDir>
+		<Configuration Condition="$(Configuration) == ''">Release</Configuration>
+		<NUnitConsoleArgs>/noshadow</NUnitConsoleArgs>
+		<NuGetPath>$(SrcDir)/.nuget/nuget.exe</NuGetPath>
+		<NuGetPackageDir>$(BuildSolutionDir)/NuGet/</NuGetPackageDir>
+		<Version>$(MajorVersion).$(MinorVersion).$(BuildVersion).$(RevisionVersion)</Version>
+		<EnvVersion>$(MajorVersion).$(MinorVersion).$(BuildVersion)</EnvVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DoBuildSolutionsDependsOn>
+			BuildSolutions;
+			NuGetPack;
+		</DoBuildSolutionsDependsOn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<NugetPackageFilesToDelete Include="$(NuGetPackageDir)/*.nupkg"/>
+	</ItemGroup>
+
+	<Target Name="Default"
+			DependsOnTargets="$(DoBuildSolutionsDependsOn)" />
+
+	<Target Name="UnitTests"
+			DependsOnTargets="$(DoBuildSolutionsDependsOn)">
+	</Target>
+
+	<Target Name="BuildSolutions"
+			DependsOnTargets="UpdateVersion">
+		<MSBuild Projects="$(SrcDir)/UDTLibrary.sln"
+				 Targets="Build"
+				 Properties="Configuration=$(Configuration)" />
+	</Target>
+
+	<Target Name="UpdateVersion">
+		<ItemGroup>
+			<RegexTransform Include="$(SrcDir)/**/AssemblyInfoVersion.cs">
+				<Find>AssemblyFileVersion\(\"\d+\.\d+\.\d+\.\d+\"\)</Find>
+				<ReplaceWith>AssemblyFileVersion("$(Version)")</ReplaceWith>
+			</RegexTransform>
+			<RegexTransform Include="$(SrcDir)/**/AssemblyInfoVersion.cs">
+				<Find>AssemblyVersion\(\"\d+\.\d+\.\d+\.\d+\"\)</Find>
+				<ReplaceWith>AssemblyVersion("$(Version)")</ReplaceWith>
+			</RegexTransform>
+			<RegexTransform Include="$(NuGetPackageDir)/**/*.nuspec">
+				<Find>(%3Cversion)%3E\s*(\d\.\d+\.\d+\.\d+)\s*(%3C%2Fversion%3E)</Find>
+				<ReplaceWith>$1%3E$(Version)$3</ReplaceWith>
+
+			</RegexTransform>
+		</ItemGroup>
+
+		<RegexTransform Items="@(RegexTransform)" />
+	</Target>
+
+	<Target Name="NuGetPack">
+		<Delete Files="@(NugetPackageFilesToDelete)" />
+
+		<ItemGroup>
+			<OracleFiles Include="$(SrcDir)/OracleBase/bin/$(Configuration)/UDTLibrary.*.dll"/>
+			<OracleFiles Include="$(SrcDir)/OracleBase/bin/$(Configuration)/UDTLibrary.*.pdb"/>
+			<OracleFiles Include="$(SrcDir)/OracleBase/bin/$(Configuration)/UDTLibrary.*.xml"/>
+		</ItemGroup>
+
+
+		<!-- UDTLibrary.Oracle -->
+
+		<MakeDir Directories="$(NuGetPackageDir)/UDTLibrary.Oracle/lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid"
+				 Condition="!Exists('$(NuGetPackageDir)/UDTLibrary.Oracle/lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid')" />
+		<Copy SourceFiles="%(OracleFiles.Identity)"
+			  DestinationFolder="$(NuGetPackageDir)/UDTLibrary.Oracle/lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid" />
+
+		<Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/UDTLibrary.Oracle/UDTLibrary.Oracle.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(EnvVersion) -Symbols"
+			  LogStandardErrorAsError="true" />
+		
+		<Exec Command="&quot;$(NuGetPath)&quot; push &quot;$(NuGetPackageDir)UDTLibrary.Oracle.$(EnvVersion).nupkg&quot; -Verbosity detailed"
+			  LogStandardErrorAsError="true" />
+
+	</Target>
+
+</Project>

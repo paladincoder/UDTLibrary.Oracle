@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>UDTLibrary.Oracle</id>
+    <title>A library to assist with mapping Oracle UDTs to .Net POCOs</title>
+    <version>1.0.14.0</version>
+    <authors>paladincoder</authors>
+    <owners>paladincoder</owners>
+    <summary></summary>
+    <description>
+	A library to assist with mapping of Oracle UDTs to POCOs.
+    </description>
+    <projectUrl>https://github.com/paladincoder/UDTLibrary</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>Oracle UDT</tags>
+    <language>en-US</language>
+
+    <dependencies>
+      <dependency id="odp.net.x64" version="112.3.20" />
+      <dependency id="odp.net.x86" version="112.3.20" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\**\*.*" target="lib" />
+  </files>
+</package>
