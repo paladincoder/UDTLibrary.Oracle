@@ -61,3 +61,5 @@ Note: At time of posting, I do not have an oracle db with which I can test the t
     public class OrderListFactory : OracleUDTTableFactory<OrderList>
     {}
 ```
+
+The base classes will then take care of all the creating and mapping between the UDT and the POCO object. All that's required now is to properly set the `UDTType` property on the `OracleCommand` object.
