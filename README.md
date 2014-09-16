@@ -15,7 +15,7 @@ developer has completed his/her work, the new field name can be mapped with the 
 
 <h1>Example</H1>
 Here's an example of what this library will do. Let's say we have 2 types defined in Oracle.
-```TSQL
+```SQL
 create or replace type order_obj as object
 (       customer_name  varchar2(30),
         address        varchar2(100), 
