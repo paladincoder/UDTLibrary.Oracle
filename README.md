@@ -53,7 +53,6 @@ Note: At time of posting, I do not have an oracle db with which I can test the t
 <code><pre>
 public class OrderList : OracleUDTTable<OrderList>
 {}
-
 [OracleCustomTypeMappingAttribute("{schema}.ORDER_LIST")]
 public class OrderListFactory : OracleUDTTableFactory<OrderList>
 {}
