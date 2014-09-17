@@ -5,7 +5,7 @@
 	<PropertyGroup>
 		<MajorVersion Condition="$(MajorVersion) == ''">1</MajorVersion>
 		<MinorVersion Condition="$(MinorVersion) == ''">0</MinorVersion>
-		<BuildVersion Condition="$(BuildVersion) == ''">14</BuildVersion>
+		<BuildVersion Condition="$(BuildVersion) == ''">15</BuildVersion>
 		<RevisionVersion Condition="$(RevisionVersion) == ''">0</RevisionVersion>
 	</PropertyGroup>
 
@@ -72,15 +72,23 @@
 			<OracleFiles Include="$(SrcDir)/OracleBase/bin/$(Configuration)/UDTLibrary.*.dll"/>
 			<OracleFiles Include="$(SrcDir)/OracleBase/bin/$(Configuration)/UDTLibrary.*.pdb"/>
 			<OracleFiles Include="$(SrcDir)/OracleBase/bin/$(Configuration)/UDTLibrary.*.xml"/>
+			<SourceFiles Include="$(SrcDir)/**/*.cs" />
 		</ItemGroup>
 
 
 		<!-- UDTLibrary.Oracle -->
-
-		<MakeDir Directories="$(NuGetPackageDir)/UDTLibrary.Oracle/lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid"
-				 Condition="!Exists('$(NuGetPackageDir)/UDTLibrary.Oracle/lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid')" />
+		<!-- Copy Assemblies -->
+		<MakeDir Directories="$(NuGetPackageDir)/UDTLibrary.Oracle/lib/net40"
+				 Condition="!Exists('$(NuGetPackageDir)/UDTLibrary.Oracle/lib/net40')" />
 		<Copy SourceFiles="%(OracleFiles.Identity)"
-			  DestinationFolder="$(NuGetPackageDir)/UDTLibrary.Oracle/lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid" />
+			  DestinationFolder="$(NuGetPackageDir)/UDTLibrary.Oracle/lib/net40" />
+
+		<!-- Copy Source Files -->
+		<MakeDir Directories="$(NuGetPackageDir)/UDTLibrary.Oracle/src"
+				 Condition="!Exists('$(NuGetPackageDir)/UDTLibrary.Oracle/scr')" />
+		<Copy SourceFiles="%(SourceFiles.Identity)"
+			  DestinationFolder="$(NuGetPackageDir)/UDTLibrary.Oracle/src" />
+
 
 		<Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/UDTLibrary.Oracle/UDTLibrary.Oracle.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(EnvVersion) -Symbols"
 			  LogStandardErrorAsError="true" />

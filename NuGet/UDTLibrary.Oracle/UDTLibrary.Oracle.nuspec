@@ -3,7 +3,7 @@
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>UDTLibrary.Oracle</id>
     <title>A library to assist with mapping Oracle UDTs to .Net POCOs</title>
-    <version>1.0.14.0</version>
+    <version>1.0.15.0</version>
     <authors>paladincoder</authors>
     <owners>paladincoder</owners>
     <summary></summary>
@@ -22,5 +22,6 @@
   </metadata>
   <files>
     <file src="lib\**\*.*" target="lib" />
+	<file src="**\*.cs" target="src" />
   </files>
 </package>
