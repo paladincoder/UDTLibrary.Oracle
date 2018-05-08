@@ -28,7 +28,7 @@ create or replace type order_obj as object
 create or replace type order_list as table of order_obj;
 ```
 
-To map them with this library, create a poco, referencing of course the Oracle.DataAccess assembly and using the `[OracleObjectMappingAttribute]. Note, the values of the mapping parameters need to be upper case.
+To map them with this library, create a poco, referencing of course the Oracle.DataAccess assembly and using the `[OracleObjectMappingAttribute]`. Note, the values of the mapping parameters need to be upper case.
 
 ```C#
     [OracleCustomTypeMappingAttribute("{schema}.ORDER_OBJ")]
