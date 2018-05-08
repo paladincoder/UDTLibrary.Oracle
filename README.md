@@ -1,6 +1,8 @@
 UDTLibrary
 ==========
 
+.Net 2.0 --
+
 A library to help mapping Oracle UDT POCO classes with Database User Defined Types
 
 This project assists when creating a POCO to map to an Oracle UDT using the [OracleObjectMappingAttribute].
